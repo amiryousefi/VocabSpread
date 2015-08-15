@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Learn a new Language by your Pocket",
+  "short_name": "VocabSpread",
+  "description": "",
+  "version": "0.0.1",
+  "minimum_chrome_version": "38",
+
+  "icons": {
+    "16": "assets/icon_16.png",
+    "128": "assets/icon_128.png"
+  },
+
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  
+  "permissions":[
+    "https://getpocket.com/"
+    ]
+}
