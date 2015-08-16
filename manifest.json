@@ -18,6 +18,10 @@
   },
   
   "permissions":[
-    "https://getpocket.com/"
+    "https://getpocket.com/",
+    "https://www.googleapis.com/",
+    "storage",
+    "fileSystem",
+    "unlimitedStorage"
     ]
 }

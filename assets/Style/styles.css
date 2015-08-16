@@ -1,11 +1,14 @@
 /* CSS file placeholder. */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
 * {
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Open Sans', sans-serif;
+  -webkit-user-select: initial !important;
+  margin:0;
+  padding:0;
 }
 
 .clr {
@@ -29,91 +32,46 @@ a {
 }
 
 .container {
-  display: flex;
-  width: 100%;
+  /* display: flex; */
+  /* width: 100%; */
+  /* height: 100%; */
+  float: left;
   height: 100%;
+  position: absolute;
+  width: 100%;
 }
 
-.sidebar {
-  width: 250px;
-  background: #34393d;
-  order: 1;
-  flex-flow: column;
+.bottombar {
+    width: 100%;
+    background: #34393d;
+    order: 1;
+    flex-flow: column;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    text-align:right;
+        z-index: 100;
+    opacity: 0.9;
+}
+.bottombar a {
   color: #fff;
 }
-.sidebar a {
-  color: #fff;
-}
-.sidebar h1 {
+.bottombar h1 {
   font-weight: 400;
   background: #19a0c5;
   line-height: 80px;
   margin: 0;
   padding: 0 30px;
 }
-.sidebar .main-nav > ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.sidebar .main-nav > ul > li {
-  transition: background-color .3s ease;
-}
-.sidebar .main-nav > ul > li.active, .sidebar .main-nav > ul > li:hover {
-  background: #40464b;
-}
-.sidebar .main-nav > ul > li > a {
-  padding: 20px 30px;
-  display: block;
-  color: #999;
-  font-weight: 700;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-.sidebar .main-nav > ul > li > .btn {
-  display: block;
-  color: #fff;
-  text-shadow: none;
-  margin: 10px 30px;
-  padding: 10px;
-  font-weight: 400;
-}
-.sidebar .main-nav > ul > li > ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.sidebar .main-nav > ul > li > ul.labels {
-  border-top: 1px solid #555;
-  margin-top: 20px;
-}
-.sidebar .main-nav > ul > li > ul > li {
-  transition: background-color .3s ease;
-  padding: 10px 30px;
-}
-.sidebar .main-nav > ul > li > ul > li.active, .sidebar .main-nav > ul > li > ul > li:hover {
-  background: #4b5359;
-}
-.sidebar .main-nav > ul > li > ul > li .btn {
-  font-size: .875rem;
-  padding: 5px;
-  float: right;
-  position: relative;
-  top: -4px;
-}
-.sidebar .main-nav > ul > li > ul > li .label {
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  top: 0;
-}
-.sidebar .main-nav > ul > li > ul > li a {
-  color: #999;
-}
 
 .main {
-  -webkit-flex: 1;
-  order: 2;
+  /* -webkit-flex: 1; */
+  /* order: 2; */
   background: #f5f5f5;
+  float: left;
+  position: absolute;
+  height: 100%;
+  width:100%;
 }
 .main .header {
   background: #44c4e7;
@@ -158,10 +116,13 @@ a {
 }
 
 .messages {
-  order: 1;
+  /* order: 1; */
   width: 400px;
   background: #fff;
   border-right: 1px solid #DDD;
+  float: left;
+  width: 40%;
+  height: 100%;
 }
 .messages h1 {
   margin: 0;
@@ -187,6 +148,8 @@ a {
   margin: 0;
   list-style: none;
   border-bottom: 1px solid #ddd;
+  overflow: overlay;
+  height: 100%;
 }
 .messages .message-list li {
   background: #F8F6F4;
@@ -245,9 +208,12 @@ a {
 }
 
 .message {
-  -webkit-flex: 1;
-  order: 2;
+  /* -webkit-flex: 1; */
+  /* order: 2; */
   background: #fff;
+  width: 60%;
+  float: right;
+  height: 100%;
 }
 .message h2 {
   margin: 0;

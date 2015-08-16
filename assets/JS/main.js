@@ -22,7 +22,21 @@ $(document).ready(function(){
   itemListID = '.message-list';
   
   
-  //addNewItem('');
+  function save2storage(key,data){
+    chrome.storage.local.set({key: data}, function() {
+          // Notify that we saved.
+          //message(key+' saved');
+        });
+  }
+  
+  function getFromStorage(key){
+    chrome.storage.local.get(key, function(storage) {
+        console.log(storage);
+      });
+    
+  }
+    
+  
   
   function getItems(){
 	$.ajax({
@@ -31,9 +45,10 @@ $(document).ready(function(){
   data: {'consumer_key':'44562-1776b752c8a85a934cb4710c','access_token':'4fc70b12-06e2-a8e3-0c30-e3d5ba',"count":"10",
 "detailType":"simple",'sort':'newest'}
 }).done(function(data){
-  console.log(data.list);
+  //console.log(data.list);
+  save2storage('list',data);
   $.each(data.list,function(id,data){
-    console.log("before add",data);
+    //console.log("before add",data);
     addNewItem(data);
   });
 	});
@@ -41,5 +56,37 @@ $(document).ready(function(){
 	
   }
  getItems();
- console.log("test");
+ 
+
+$(".body *").mouseup(function() {
+    var text=getSelectedText();
+    if (text!=''){
+      console.log(text);
+       getFromStorage();
+      var api_key = "AIzaSyB5ZLzP4oLzQfZQA-rEiSGDpu072SmqvQI";
+      var url = "https://www.googleapis.com/language/translate/v2?key="+api_key+"&source=en&target=fa&q="+text;
+      $.ajax({
+        type:"GET",
+        url:url
+      }).done(function(data){
+        
+        $.each(data.data.translations,function(key,translations){
+          
+          console.log("translations",translations.translatedText);
+          $(".bottombar #translated").show().html(translations.translatedText);
+        });
+        
+      });
+    } 
+});
+
+function getSelectedText() {
+    if (window.getSelection) {
+        return window.getSelection().toString();
+    } else if (document.selection) {
+        return document.selection.createRange().text;
+    }
+    return '';
+}
+ 
 });
